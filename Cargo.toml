@@ -1,0 +1,10 @@
+[package]
+name = "brainfuck"
+version = "0.1.0"
+description = "Brainfuck compiler"
+authors = ["florianvazelle <ponythugflorian@gmail.fr>"]
+edition = "2018"
+
+[lib]
+name = "brainfuck"
+path = "src/lib.rs"
