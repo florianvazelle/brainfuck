@@ -1,8 +1,8 @@
 use std::env;
-use std::fs::{File};
-use std::io::{BufReader,Read,Write};
+use std::fs::File;
+use std::io::{BufReader, Read, Write};
 
-use brainfuck::{lexer, parser, analyzer, compiler};
+use brainfuck::{analyzer, compiler, lexer, parser};
 
 fn main() {
     // Get command line parameters
@@ -10,7 +10,7 @@ fn main() {
 
     if args.len() < 3 {
         println!("Usage : {} INPUT.bf OUTPUT.c", &args[0]);
-        return
+        return;
     }
 
     // Open and read brainfuck file
@@ -23,12 +23,12 @@ fn main() {
     let tokens = lexer::tokenize(&contents);
 
     // Parse
-    let parsers = parser::parse(&tokens.as_slice());
+    let parsers = parser::parse(tokens.as_slice());
 
-    let size = analyzer::analyze(&parsers.as_slice());
+    let size = analyzer::analyze(parsers.as_slice());
 
     // Compile into C code
-    let c_code = compiler::compile(&parsers.as_slice(), size);
+    let c_code = compiler::compile(parsers.as_slice(), size);
 
     // Write into a new C file
     let mut handle = File::create(&args[2]).unwrap();

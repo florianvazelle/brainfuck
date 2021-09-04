@@ -7,7 +7,7 @@ pub enum Token {
     Dot,          // .
     Comma,        // ,
     OpenBracket,  // [
-    CloseBracket  // ]
+    CloseBracket, // ]
 }
 
 pub fn tokenize(inputs: &str) -> Vec<Token> {
